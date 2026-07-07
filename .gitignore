@@ -1,0 +1,15 @@
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.idea/
+.vscode/
+.DS_Store
+__pycache__/
+*.pyc
+*.db
