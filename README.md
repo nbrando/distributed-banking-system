@@ -1,5 +1,7 @@
 # Distributed Banking System
-Three-tier distributed banking system built for Distributed Systems assignment. A mock bank system customer can log in, check their balance, and send money to another account.
+A three-tier distributed banking system built for a Distributed Systems assignment, implemented in Python using Pyro5 (RPC) and SQLite. A customer can log in, check their balance, and send money to another account.
+
+The design below is adapted from my submitted assignment report
 
 ---
 
@@ -9,11 +11,15 @@ Three-tier distributed banking system built for Distributed Systems assignment. 
 (customer)                      (business logic)                    (SQLite storage)
 ```
 
+![Architecture Diagram](docs/deployment.png)
+
 - **BC Client**: the customer-facing app. Handles sign-in, balance queries, and transfer requests/status checks. Has no direct access to the database.
 - **BAS Server**: the application layer. Handles authentication, session/token management, input validation, fee calculation, transfer orchestration, and logging.
 - **BDB Server**: the data layer. The only component that talks to SQLite. Stores users, accounts, balances, transfer records, and audit logs.
 All communication uses **Pyro5** for request/response calls, since most operations in this system (login, balance query, transfer submission, status lookup) are synchronous, the client needs an immediate answer before it can proceed.
  
+![Transfer Flow Diagram](docs/flow.png)
+
 ---
 
 ## Design and Rationale
